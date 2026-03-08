@@ -6,7 +6,7 @@ gui.Name = "UltraGodHub"
 --====================--
 -- SETTINGS
 --====================--
-local LOGO = "rbxassetid://YOUR_LOGO_ID" -- replace with your logo
+local LOGO = "rbxassetid://109116319769209" -- replace with your logo
 local VALID_KEYS = {
     ["MEGA123"] = nil,
     ["PREMIUM777"] = nil,
