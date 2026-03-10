@@ -9,7 +9,15 @@ local TweenService = game:GetService("TweenService")
 --// CONFIGURATION
 local DECAL_ID = "80954728278584" 
 local LOGO_IMAGE = "rbxthumb://type=Asset&id=" .. DECAL_ID .. "&w=420&h=420"
-local CORRECT_KEY = "SLATE-13222"
+--// CONFIGURATION
+local DECAL_ID = "80954728278584" 
+local LOGO_IMAGE = "rbxthumb://type=Asset&id=" .. DECAL_ID .. "&w=420&h=420"
+
+-- You can add as many keys as you want to this list!
+local KEYS = {
+    ["SLATE-13222"] = true,
+    ["SLATE-PAID-4343"] = true,
+}
 
 --// Cleanup
 local existing = game:GetService("CoreGui"):FindFirstChild("Slate_Neural_Final") or LP.PlayerGui:FindFirstChild("Slate_Neural_Final")
@@ -207,12 +215,19 @@ task.spawn(function()
 end)
 
 Submit.MouseButton1Click:Connect(function()
-    if KeyInput.Text == CORRECT_KEY then
-        Submit.Text = "SUCCESS"; Submit.BackgroundColor3 = Color3.fromRGB(40, 150, 40)
-        task.wait(1); Loader:Destroy(); Main.Visible = true
+    -- This checks if the text entered exists in our KEYS table
+    if KEYS[KeyInput.Text] then
+        Submit.Text = "SUCCESS"
+        Submit.BackgroundColor3 = Color3.fromRGB(40, 150, 40)
+        task.wait(1)
+        Loader:Destroy()
+        Main.Visible = true
     else
-        Submit.Text = "INVALID"; Submit.BackgroundColor3 = Color3.fromRGB(150, 40, 40)
-        task.wait(1); Submit.Text = "AUTHENTICATE"; Submit.BackgroundColor3 = Color3.fromRGB(35, 35, 45)
+        Submit.Text = "INVALID KEY"
+        Submit.BackgroundColor3 = Color3.fromRGB(150, 40, 40)
+        task.wait(1)
+        Submit.Text = "AUTHENTICATE"
+        Submit.BackgroundColor3 = Color3.fromRGB(35, 35, 45)
     end
 end)
 
